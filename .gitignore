@@ -1,4 +1,4 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
 # Compiled output
 /dist
@@ -26,6 +26,7 @@ yarn-error.log
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+!.vscode/mcp.json
 .history/*
 
 # Miscellaneous
@@ -36,41 +37,8 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+__screenshots__/
 
 # System files
 .DS_Store
 Thumbs.db
-
-### *** required entries below ***
-###
-### Please do not add anything below this line, your changes will be overwritten
-###
-*.iml
-*.iws
-.externalToolBuilders/
-.DS.d74cb6fe
-__MACOSX/
-.nb-gradle/
-.history/
-atlassian-ide-plugin.xml
-nbactions.xml
-nbbuild/
-nbdist/
-nbproject/private/
-### VisualStudioCode ###
-!.vscode/60f69
-*.code-workspace
-### VisualStudioCode Patch ###
-# Ignore all local history of files
-.history
-.ionide
-node_modules
-.npm-debug.log
-tmp
-
-
-
-
-###
-###                                                                                                                                                                                                                                  git#397161
-###
