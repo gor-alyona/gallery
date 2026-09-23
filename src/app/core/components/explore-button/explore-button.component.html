@@ -1,0 +1,6 @@
+<a [routerLink]="route()" mat-flat-button class="explore-btn primary">
+  @if (icon(); as i) {
+    <mat-icon>{{ i }}</mat-icon>
+  }
+  <span>{{ label() }}</span>
+</a>

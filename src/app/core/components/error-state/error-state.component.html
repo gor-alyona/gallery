@@ -1,0 +1,24 @@
+<div class="error-state" role="alert" aria-live="assertive">
+  <div class="error-state__card">
+    <div class="error-state__icon-wrapper">
+      <mat-icon class="error-state__icon" aria-hidden="true">{{ icon() }}</mat-icon>
+    </div>
+    <h2 class="error-state__title">{{ title() }}</h2>
+    <p class="error-state__message">{{ message() }}</p>
+    <div class="error-state__actions">
+      @if (showRetry()) {
+        <button mat-flat-button class="error-state__reload-btn" (click)="onRetry()">
+          <mat-icon class="error-state__reload-btn-icon" aria-hidden="true">refresh</mat-icon>
+          <span>{{ retryLabel() }}</span>
+        </button>
+      }
+      @if (secondaryAction(); as action) {
+        <app-explore-button
+          [route]="action.route"
+          [label]="action.label"
+          [icon]="action.icon ?? null"
+        />
+      }
+    </div>
+  </div>
+</div>

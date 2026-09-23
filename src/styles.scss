@@ -1,1 +1,145 @@
-/* You can add global styles to this file, and also import other style files */
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light;
+
+  // Set a default background, font and text colors for the application using
+  // Angular Material's system-level CSS variables. Learn more about these
+  // variables at https://material.angular.dev/guide/system-variables
+  background-color: var(--mat-sys-surface, #f8fafc);
+  color: var(--mat-sys-on-surface, #0f172a);
+  font: var(--mat-sys-body-medium);
+
+  font-family:
+    'Roboto',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Target root page and all scrollable containers */
+html,
+body,
+* {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 9999px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #94a3b8;
+  }
+}
+
+/* Firefox-only fallback (Firefox doesn't support border-radius on scrollbars) */
+@-moz-document url-prefix() {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+}
+
+/* ==========================================================================
+   Snackbar Custom Themes (via panelClass)
+   ========================================================================== */
+
+.mat-mdc-snack-bar-container {
+  &.error-snack-bar {
+    --mdc-snackbar-container-color: #0f172a;
+    --mdc-snackbar-supporting-text-color: #f8fafc;
+    --mat-snack-bar-button-color: #f59e0b;
+
+    .mdc-snackbar__surface {
+      border-left: 4px solid #ef4444;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    .mat-mdc-button {
+      font-weight: 600;
+      letter-spacing: 0.025em;
+    }
+  }
+
+  &.success-snack-bar,
+  &.favorite-snack-bar {
+    --mdc-snackbar-container-color: #0f172a;
+    --mdc-snackbar-supporting-text-color: #f8fafc;
+    --mat-snack-bar-button-color: #38bdf8;
+
+    .mdc-snackbar__surface {
+      border-left: 4px solid #10b981;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+    }
+
+    .mat-mdc-button {
+      font-weight: 600;
+      letter-spacing: 0.025em;
+    }
+  }
+
+  &.info-snack-bar {
+    --mdc-snackbar-container-color: #0f172a;
+    --mdc-snackbar-supporting-text-color: #f8fafc;
+    --mat-snack-bar-button-color: #38bdf8;
+
+    .mdc-snackbar__surface {
+      border-left: 4px solid #3b82f6;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+    }
+
+    .mat-mdc-button {
+      font-weight: 600;
+      letter-spacing: 0.025em;
+    }
+  }
+}

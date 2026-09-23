@@ -1,0 +1,58 @@
+<section class="photos" aria-label="Photo gallery" [attr.aria-busy]="isLoading()">
+  @if (hasInitialError() && rows().length === 0) {
+    <app-error-state
+      title="Failed to load gallery"
+      message="We couldn't load the photo gallery. Please check your connection and try again."
+      showRetry
+      retryLabel="Retry"
+      (retry)="loadNextPage()"
+    />
+  } @else {
+    <div class="photos__viewport-wrapper">
+      <cdk-virtual-scroll-viewport #viewport [itemSize]="rowHeight()" class="photos__viewport">
+        <div
+          *cdkVirtualFor="let row of rows(); let last = last; trackBy: trackByRow"
+          class="photos__row"
+          [style.height.px]="rowHeight()"
+        >
+          <div class="photos__grid" [style.gridTemplateColumns]="gridColumnsStyle()">
+            @for (photo of row; track photo.id) {
+              <div class="photos__grid-item">
+                <app-photo-card [photo]="photo" clickable (cardClick)="addToFavorites($event)" />
+              </div>
+            }
+          </div>
+
+          @if (last) {
+            <div
+              class="photos__sentinel"
+              appInfiniteScroll
+              [container]="viewport.elementRef.nativeElement"
+              [distance]="100"
+              [loading]="isLoading()"
+              [hasMore]="hasMore()"
+              (loadMore)="loadNextPage()"
+            ></div>
+          }
+        </div>
+
+        @if (rows().length === 0 && isLoading()) {
+          <app-loading message="Loading curated gallery photos..." />
+        }
+      </cdk-virtual-scroll-viewport>
+
+      @if (isLoading() && rows().length > 0) {
+        <div class="photos__loading-indicator" role="status" aria-live="polite">
+          <mat-spinner diameter="24" />
+          <span>Loading next batch of photos...</span>
+        </div>
+      }
+
+      @if (!hasMore() && rows().length > 0) {
+        <div class="photos__end-indicator" role="status">
+          <span>You've reached the end of the gallery</span>
+        </div>
+      }
+    </div>
+  }
+</section>

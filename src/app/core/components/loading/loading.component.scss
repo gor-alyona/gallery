@@ -1,0 +1,20 @@
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2.5rem 1rem;
+  min-height: 240px;
+  width: 100%;
+  color: #64748b;
+  text-align: center;
+
+  &__message {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #64748b;
+  }
+}

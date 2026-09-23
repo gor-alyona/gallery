@@ -1,0 +1,23 @@
+<div class="photo-detail">
+  @if (isLoading()) {
+    <app-loading message="Loading photo..." />
+  } @else if (errorState() === 'not-found') {
+    <app-not-found description="Photo not found" [action]="notFoundAction" />
+  } @else if (errorState() === 'error') {
+    <app-error-state [secondaryAction]="goToFavoritesAction" showRetry (retry)="loadPhoto(id())" />
+  } @else if (photo(); as p) {
+    <div class="photo-detail__container">
+      <app-photo-card [photo]="p" />
+      <div class="photo-detail__actions">
+        <button
+          mat-flat-button
+          class="photo-detail__remove-btn"
+          (click)="removeFromFavorites(p.id)"
+        >
+          <mat-icon class="photo-detail__remove-btn-icon">delete_outline</mat-icon>
+          <span class="photo-detail__remove-btn-text">Remove from favorites</span>
+        </button>
+      </div>
+    </div>
+  }
+</div>

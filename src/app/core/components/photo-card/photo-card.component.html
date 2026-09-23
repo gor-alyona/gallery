@@ -1,0 +1,40 @@
+<mat-card
+  class="custom-photo-card"
+  [style.aspectRatio]="imageRatio"
+  appearance="outlined"
+  [attr.tabindex]="clickable() ? 0 : null"
+  [attr.role]="clickable() ? 'button' : null"
+  [attr.aria-label]="computedAriaLabel()"
+  [class.clickable]="clickable()"
+  [class.has-error]="hasError()"
+  (click)="onCardClicked()"
+  (keydown.enter)="onCardClicked()"
+>
+  <div class="image-wrapper">
+    @if (!imageLoaded() && !hasError()) {
+      <div class="skeleton-shimmer" aria-hidden="true">
+        <div class="skeleton-icon-placeholder">
+          <mat-icon>photo</mat-icon>
+        </div>
+      </div>
+    }
+
+    @if (hasError()) {
+      <div class="error-placeholder" role="status" aria-label="Image unavailable">
+        <mat-icon class="error-placeholder__icon">broken_image</mat-icon>
+        <span class="error-placeholder__text">Image unavailable</span>
+      </div>
+    } @else {
+      <img
+        mat-card-image
+        [ngSrc]="photo().url"
+        fill
+        loading="lazy"
+        [alt]="computedAltText()"
+        [class.loaded]="imageLoaded()"
+        (load)="onImageLoaded()"
+        (error)="onImageError()"
+      />
+    }
+  </div>
+</mat-card>

@@ -1,0 +1,38 @@
+@let favs = favorites();
+<section class="favorites" aria-label="Favorite photos" [attr.aria-busy]="isLoading()">
+  @if (isLoading()) {
+    <app-loading message="Loading your favorite photos..." />
+  } @else if (hasError()) {
+    <app-error-state
+      title="Unable to load favorites"
+      message="We couldn't load your favorite photos. Please try again."
+      [secondaryAction]="goToPhotosAction"
+      showRetry
+      (retry)="loadFavorites()"
+    />
+  } @else if (!favs || favs.length === 0) {
+    <div class="favorites__empty">
+      <div class="favorites__empty-icon-wrapper">
+        <mat-icon class="favorites__empty-icon" aria-hidden="true">favorite_border</mat-icon>
+      </div>
+      <h2 class="favorites__empty-title">No favorites yet</h2>
+      <p class="favorites__empty-description">
+        Explore the gallery and click any photo to add it to your personal favorites collection.
+      </p>
+      <app-explore-button class="favorites__empty-action" />
+    </div>
+  } @else {
+    <div class="favorites__grid">
+      @for (photo of favs; track photo.id) {
+        <div class="favorites__grid-item">
+          <app-photo-card
+            [photo]="photo"
+            clickable
+            [ariaLabel]="'View details for photo ' + photo.id"
+            (cardClick)="goToDetails($event)"
+          />
+        </div>
+      }
+    </div>
+  }
+</section>

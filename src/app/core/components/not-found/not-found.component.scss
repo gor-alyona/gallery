@@ -1,0 +1,43 @@
+.not-found {
+  min-height: calc(80dvh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+
+  &__card {
+    text-align: center;
+    max-width: 480px;
+    background: #ffffff;
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+
+    .status-code {
+      display: inline-block;
+      font-size: 5rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -2px;
+      background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #111827;
+      margin: 0 0 0.75rem;
+    }
+
+    p {
+      color: #6b7280;
+      font-size: 1rem;
+      line-height: 1.5;
+      margin: 0 0 2rem;
+    }
+  }
+}

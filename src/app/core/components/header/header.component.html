@@ -1,0 +1,32 @@
+<header class="header">
+  <nav class="header__nav" aria-label="Main Navigation">
+    <ul class="header__nav-list">
+      <li class="header__nav-item">
+        <a
+          mat-button
+          routerLink="/"
+          routerLinkActive="header__nav-link--active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          ariaCurrentWhenActive="page"
+          class="header__nav-link"
+        >
+          <mat-icon class="header__nav-icon" aria-hidden="true">photo_library</mat-icon>
+          <span class="header__nav-label">Photos</span>
+        </a>
+      </li>
+
+      <li class="header__nav-item">
+        <a
+          mat-button
+          routerLink="/favorites"
+          routerLinkActive="header__nav-link--active"
+          ariaCurrentWhenActive="page"
+          class="header__nav-link"
+        >
+          <mat-icon class="header__nav-icon" aria-hidden="true">favorite</mat-icon>
+          <span class="header__nav-label">Favorites</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
