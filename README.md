@@ -167,7 +167,7 @@ gallery/
 
 ### Prerequisites
 
-- **Node.js**: `v20.x` or higher (LTS recommended)
+- **Node.js**: `^22.22.3 || ^24.15.0 || >=26.0.0` (matching Angular 22 requirements)
 - **npm**: `v11.x` or higher
 
 ### Installation
